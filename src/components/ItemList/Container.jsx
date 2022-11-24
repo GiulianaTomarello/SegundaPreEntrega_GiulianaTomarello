@@ -10,18 +10,17 @@ import getItems from "../../Services/mockService";
 function Container() {
   const [products, setProducts] = useState([]);
   // const parametrosUrl = useParams();
-  const {category}= useParams();
+  const {idCategory}= useParams();
 
   async function getItemsAsync() {
-    let respuesta = await getItems(category);
+    let respuesta = await getItems(idCategory);
     setProducts(respuesta);
   }
 
   useEffect(() => {
     getItemsAsync();
-  }, []);
+  }, [idCategory]);
 
-  console.log(category)
   return (
     <div className="itemgeneral">
       {products.map((product) => {
