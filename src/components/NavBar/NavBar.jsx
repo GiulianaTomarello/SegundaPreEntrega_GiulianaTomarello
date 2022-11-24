@@ -13,13 +13,13 @@ function NavBar() {
           </Link>
         </li>
         <li>
-          <Link to="/category/Carteras">Carteras</Link>
+          <Link to="/category/Cartera">Carteras</Link>
         </li>
         <li>
-          <Link to="/category/Billeteras">Billeteras</Link>
+          <Link to="/category/Billetera">Billeteras</Link>
         </li>
         <li>
-          <Link to="/category/Mochilas">Mochilas</Link>
+          <Link to="/category/Mochila">Mochilas</Link>
         </li>
         <li>
           <CartWidget />

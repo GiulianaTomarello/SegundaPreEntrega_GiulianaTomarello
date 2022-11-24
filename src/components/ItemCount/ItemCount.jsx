@@ -1,31 +1,32 @@
 import React, { useState } from "react";
+import MyButton from "../MyButton/Button";
 
-
-function ItemCount({ stock }) {
+function ItemCount({ stock, onAddToCart }) {
   const [count, setCount] = useState(1);
 
-  function handleAdd(evt) {
+  function handleAdd() {
     if (count < stock) setCount(count + 1);
   }
 
-  function handleSubstract(evt) {
+  function handleSubstract() {
     if (count > 1) setCount(count - 1);
   }
+
 
   return (
     <div className="itemcount_container">
       <div className="itemcount_control">
-        <button conClick={handleSubstract}>
+        <MyButton colorBtn="red" onClick={handleSubstract}>
           -
-        </button>
+        </MyButton>
         <span>{count}</span>
-        <button onClick={handleAdd}>
-          +
-        </button>
+        <MyButton colorBtn="green" onClick={handleAdd}>
+            +
+        </MyButton>
       </div>
       <div className="itemcount_btns">
         {/* 3. agregar un onClick con el evento recibido por Props */}
-        <button>
+        <button onClick={()=>onAddToCart(count)}>
           agregar al carrito
         </button>
       </div>

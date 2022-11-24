@@ -1,6 +1,9 @@
-import "./itemdetail.css";
+import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
 
+function onAddToCart(count){
+  alert(`agregaste ${count} items al carrito!`)
+}
 function ItemDetail({ product }) {
   return (
     <div className="card-detail">
@@ -12,7 +15,7 @@ function ItemDetail({ product }) {
         <p>{product.description}</p>
         <h4 className="priceTag">$ {product.price}</h4>
       </div>
-      <ItemCount stock={3}/>
+      <ItemCount onAddTocart={onAddToCart} stock={product.stock}/>
       </div>
   );
 }

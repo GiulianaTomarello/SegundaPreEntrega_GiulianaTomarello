@@ -2,15 +2,17 @@ import "./Button.css";
 import React, { useState } from "react";
 
 function MyButton(props) {
-  let [colorBtn, setColorBtn] = useState(props.color);
+  let [colorBtn, setColorBtn] = useState(props.colorBtn);
 
   function handleClick() {
-    setColorBtn("red");
-  }
+     setColorBtn("blue");
+    props.onClick();
+   }
 
+  
   return (
     <button
-      onClick={handleClick}
+      onClick={props.onClick}
       style={{ backgroundColor: colorBtn}}
       className="btn"
     >

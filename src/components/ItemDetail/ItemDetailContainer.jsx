@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { getSingleItem } from "../../Services/mockService";
 import {useParams} from "react-router-dom";
+import ItemDetail from "./ItemDetail";
+
 
 function ItemDetailContainer() {
   const [product, setProduct] = useState({});
@@ -16,12 +18,8 @@ function ItemDetailContainer() {
   }, []);
 
   return (
-    <div className="item-list">
-      <h3>{product.title}</h3>
-      <h3>{product.price}</h3>
-      <h3>{product.description}</h3>
-      <img src={product.imgurl} />
-    </div>
+    <ItemDetail product={product}/>
+
   );
 }
 
