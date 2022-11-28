@@ -1,13 +1,14 @@
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
 
-function onAddToCart(count){
-  alert(`agregaste ${count} items al carrito!`)
-}
+
 function ItemDetail({ product }) {
+  function onAddToCart(count){
+    alert(`agregaste ${count} items al carrito!`)
+  }
   return (
-    <div className="card-detail">
-      <div className="card-detail_img">
+    <div className="card-detail-2">
+      <div className="card-detail_img-2">
         <img src={product.imgurl} alt="Product img" />
       </div>
       <div className="card-detail_detail">
@@ -15,7 +16,7 @@ function ItemDetail({ product }) {
         <p>{product.description}</p>
         <h4 className="priceTag">$ {product.price}</h4>
       </div>
-      <ItemCount onAddTocart={onAddToCart} stock={product.stock}/>
+      <ItemCount onAddToCart={onAddToCart} stock={product.stock}/>
       </div>
   );
 }
