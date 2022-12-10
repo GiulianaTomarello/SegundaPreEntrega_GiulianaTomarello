@@ -5,12 +5,15 @@ import "./itemgeneral.css";
 import { getSingleItem } from "../../Services/mockService";
 import { useParams } from "react-router-dom";
 import getItems from "../../Services/mockService";
+import ItemList from "./ItemList";
 
 
 function Container() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([null]);
   // const parametrosUrl = useParams();
   const {idCategory}= useParams();
+
+  const loader = <h3>Cargando productos ...</h3>
 
   async function getItemsAsync() {
     let respuesta = await getItems(idCategory);
@@ -19,25 +22,13 @@ function Container() {
 
   useEffect(() => {
     getItemsAsync();
+    return () => {
+      console.log("Componente desmontado");
+    };
   }, [idCategory]);
 
-  return (
-    <div className="itemgeneral">
-      {products.map((product) => {
-        return (
-          <Item
-            key={product.id}
-            id={product.id}
-            imgurl={product.imgurl}
-            title={product.title}
-            price={product.price}
-            category={product.category}
-            color="darkgreen"
-          />
-        );
-      })}
-    </div>
-  );
+  return <>{products ? <ItemList products={products}/> : loader }</>
+  
 }
 
 export default Container;

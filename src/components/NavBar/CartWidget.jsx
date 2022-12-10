@@ -7,8 +7,8 @@ function CartWidget() {
   const miContext = useContext(cartContext)
   console.log(miContext)
   return <>
-  <IconSVG />;
-  <span>{miContext.itemsInCart}</span>
+  <IconSVG />
+  <span>{miContext.itemsInCart()}</span>
   </>
 }
 

@@ -1,10 +1,15 @@
 import "./ItemDetail.css";
+import { useContext } from "react";
+import { cartContext } from "../../Context/cartContext";
 import ItemCount from "../ItemCount/ItemCount";
 
 
 function ItemDetail({ product }) {
+  const {addToCart} = useContext(cartContext)
+
   function onAddToCart(count){
     alert(`agregaste ${count} items al carrito!`)
+    addToCart(product,count)
   }
   return (
     <div className="card-detail-2">

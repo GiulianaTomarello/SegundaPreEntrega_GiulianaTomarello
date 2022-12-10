@@ -3,15 +3,37 @@ import { createContext, useState  } from "react";
 export const cartContext = createContext();
 
 
-export function cartContextProvider(props){
-   const saludo = "hola";
+export function CartContextProvider(props){
+   const saludo = "hola"
+
+
    
-   const value = {
-    saludo
+   const [cart, setCart] = useState([])
+
+   function addToCart (product, count){
+    let itemalreadyInCart =cart.findIndex(itemInCart => itemInCart.id === product.id)
+    let newCart = [...cart]
+
+    if(itemalreadyInCart !== -1){
+        newCart[itemalreadyInCart].count += count
+        setCart(newCart)
+    }else{
+   
+    product.count = count;
+    newCart.push(product)
+    setCart(newCart)
+    
+   }
+}
+
+   function itemsInCart(){
+    let total = 0
+    cart.forEach((itemInCart) => (total= total+ itemInCart.count))
+    return total
    }
 
     return(
-        <cartContext.Provider value={value}>
+        <cartContext.Provider value={{saludo,addToCart, itemsInCart}}>
             {props.children}
         </cartContext.Provider>
     )
